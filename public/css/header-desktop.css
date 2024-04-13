@@ -1,0 +1,41 @@
+body header {
+    width: 100%;
+    min-height: var(--header-height);
+    display: flex;
+    position: sticky;
+    top: 0px;
+    background-color: var(--main-background);
+}
+
+body header > img,
+body header a,
+body header > a img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body header div.header-bar
+{
+    display: flex;
+    justify-content: right;
+    height: 100%;
+    width: 100%;
+    border-bottom-left-radius: 30px;
+    background-color: var(--main-yellow);
+}
+
+body header a img.logo{
+    height: 80px;
+    height: 80px;
+    margin: auto;
+    box-sizing: border-box;
+    padding: 0px 10px;
+}
+body header img.profile,
+body header img.notification{
+    height: 50px;
+    height: 50px;
+    margin: auto 20px;
+    cursor: pointer;
+}

@@ -1,0 +1,88 @@
+body main 
+{
+    overflow-y: initial;
+}
+
+section.user-settings
+{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+section.user-settings form 
+{
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+    margin-top: 50px;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+section.user-settings form 
+{
+    display: flex;
+    max-width: 600px;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+section.user-settings form div.user-information
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+section.user-settings form div.user-photo
+{
+    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+section.user-settings form div.user-photo label
+{
+    color: var(--main-yellow);
+}
+section.user-settings form div.user-photo label:hover
+{
+    cursor: pointer;
+}
+section.user-settings form div.user-photo input[type="file"]
+{
+    display: none;
+}
+
+
+
+section.user-settings form div.user-photo img
+{
+    width: 150px; 
+}
+
+section.user-settings form div.user-description
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+section.user-settings form div.user-description input
+{
+    margin-left: auto;
+    flex-basis: 45%;
+    align-self: start;
+}
+section.user-settings form div.user-description label
+{
+    flex-basis: 50%;
+    align-self: start;
+}

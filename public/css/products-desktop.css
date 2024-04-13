@@ -1,0 +1,255 @@
+:root {
+    --header-height: 100px;
+    --footer-height: 80px;
+    --main-height: calc(100vh - var(--header-height) - var(--footer-height));
+
+    --main-yellow: #D0B05B;
+    --main-background: #2A0D58;
+    --text-dark-color: black;
+    --text-section-color: #2A0D58;
+}
+
+a, a:hover, a:active, a:visited
+{
+    color: var(--text-dark-color);
+    text-decoration: none;
+}
+
+body {
+    margin: 0px;
+    background-color: var(--main-background);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: var(--main-yellow);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130.703%;
+    /* 60.123px */
+    letter-spacing: 6.68px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar
+{
+    display: none;
+}
+
+
+body main {
+    height: calc(100vh - var(--header-height));
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items:flex-start;
+    justify-content: space-around;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+body main::-webkit-scrollbar,
+body main::-webkit-scrollbar {
+    display: none;
+  }
+
+
+body main div.vertical-line{
+    width: 6px;
+    background-color: var(--main-yellow);
+    height: 90%;
+    position: relative;
+    top: 50px;
+    box-sizing: content-box;
+}
+
+body section.information-block
+{ 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: calc(100% - 82px);
+    padding: 0px 3% 12px 4%;
+    margin: 82px 4% 0 0;
+    background-color: white;
+    color: var(--text-section-color);
+    border-top-right-radius: 50px;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 3px;
+}
+body section.information-block img.product-image
+{
+    width: 150px;
+    padding: 30px 0px 0px 0px;
+}
+
+body section.disabled
+{
+    display: none;
+}
+body section.information-block form
+{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body section.information-block h1
+{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px;
+    flex-basis: 100%;
+}
+body section.information-block h3 
+{
+    display: inline-block;
+    flex-basis: 48%;
+    margin: 15px 0px
+}
+body section.information-block h5
+{
+    display: inline-block;
+    flex-basis: 100%;
+    margin: 8px 0px 0px 0px;
+}
+body section.information-block input
+{
+    flex-basis: 48%;
+}
+
+body section.information-block div.diet-group
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+
+body section.information-block div.diet-group button {
+    border: none;
+    border-radius: 35px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  body section.information-block div.diet-group button input 
+  {
+    display: none;
+  }
+  body section.information-block div.diet-group button.False
+  {
+    background-color: white;
+  }
+  body section.information-block div.diet-group button.False:hover
+  {
+    background-color: grey;
+  }
+  body section.information-block div.diet-group button.True
+  {
+    background-color: green;
+  }
+  body section.information-block div.diet-group button.True:hover
+  {
+    background-color: darkgreen;
+  }
+
+  /* Style for the graphic inside the button */
+  body section.information-block div.diet-group button img {
+    height: 35px;
+    max-width: 100%; /* Ensure the image does not exceed the button's boundaries */
+  }
+
+  body section.information-block div.diet-information
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+  /* Style for the graphic inside the button */
+  body section.information-block div.diet-information img {
+    height: 70px;
+    max-width: 100%; /* Ensure the image does not exceed the button's boundaries */
+  }
+
+  body main div.form-button 
+  {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 40px;
+    right: 40px;
+    border-radius: 35px;
+    background-color: var(--main-yellow);
+    padding: 5px;
+  }
+  body main div.form-button:hover{
+    cursor: pointer;
+  }
+  body main div.form-button img 
+  {
+    width: 60px;
+    height: 60px;
+    filter: opacity(50%);
+  }
+
+body div.messagebox
+{
+  position: fixed;
+  top: 150px;
+  right: calc(50% - 20vw);
+  width: 40vw;
+  height: 30vh;
+  border-radius: 20px;
+  background-color: var(--main-background);
+  border: var(--main-yellow) solid 6px;
+  color: white;
+  z-index: 2;
+}
+body div.messagebox h3
+{
+  margin-top: 30px;
+  display: block;
+  text-align: center;
+}
+body div.messagebox div.messageCancel
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+body div.messagebox div.messageCancel:hover 
+{
+  cursor: pointer;
+}
+body div.messagebox div.messageCancel img
+{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(100%);
+}
+
+

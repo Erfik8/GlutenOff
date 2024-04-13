@@ -1,0 +1,162 @@
+:root
+{
+    --main-element-background: #dedede;
+    --main-element-text-color: #858585;
+    --main-background: #2A0D58;
+}
+
+div.product-search,div.shop-search
+{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px 4% 12px 4%;
+    margin-top: 82px;
+    height: calc(100% - 82px);
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+div.product-search::-webkit-scrollbar,
+div.shop-search::-webkit-scrollbar{
+    display: none;
+  }
+
+div.product-search div.input,
+div.shop-search div.input
+{
+    display: flex;
+    position: sticky;
+    top: 0px;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 0;
+    background-color: var(--main-background);
+}
+div.product-search div.input input,
+div.shop-search div.input input
+{
+    width: 100%;
+    font-size: 16px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: solid 0px;
+    background-color: grey;
+    color: black;
+}
+div.product-search div.input img,
+div.shop-search div.input img
+{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    object-fit: contain;
+    height: 14px;
+}
+
+
+/*Styling for products*/
+
+div.product-search div.products-list{
+    display: flex;
+    flex-direction: column;
+    color: var(--main-element-text-color);
+    letter-spacing: 2px;
+    text-shadow: none;
+    padding-top: 40px;
+}
+div.product-search div.products-list div.product-element{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 60px;
+    padding: 5px;
+    margin: 10px;
+    background-color: var(--main-element-background);
+    border-radius: 10px;
+}
+
+div.product-search div.products-list div.product-element img.product-images{
+    object-fit: contain;
+    height: 100%;
+    margin: auto;
+}
+div.product-search div.products-list div.product-element div.description{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+div.product-search div.products-list div.product-element div.description *{
+    margin: 0px;
+    font-size: 0.9em;
+}
+
+/*Styling for shops*/
+
+div.shop-search div.shops-list{
+    display: flex;
+    flex-direction: column;
+    color: var(--main-element-text-color);
+    letter-spacing: 1px;
+    text-shadow: none;
+    padding-top: 40px;
+}
+div.shop-search div.shops-list div.shop-element{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 80px;
+    padding: 5px;
+    margin: 10px;
+    background-color: var(--main-element-background);
+
+    border-radius: 10px;
+}
+div.shop-search div.shops-list div.shop-element img{
+    max-width: 80px;
+    object-fit: contain;
+}
+div.shop-search div.shops-list div.shop-element img.images{
+    object-fit: contain;
+    height: 100%;
+    max-height: 100px;
+    margin: auto;
+}
+div.shop-search div.shops-list div.shop-element div.description{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+div.shop-search div.shops-list div.shop-element div.description *{
+    margin: 0px;
+    font-size: 0.65em;
+}
+div.shop-search div.shops-list div.shop-element div.diet-list{
+    width: 17%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+div.shop-search div.shops-list div.shop-element div.diet-list img.diets{
+    object-fit: contain;
+    flex-basis: 49%;
+    max-width: 20px;
+}
+
+img.deactive
+{
+    display: none;
+}
+
+img.active
+{
+    display: initial;
+}
