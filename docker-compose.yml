@@ -23,19 +23,7 @@ services:
           - .:/app/
         links:
           - php
-          - db
-        networks:
-            - symfony
-
-    db:
-        build:
-          context: .
-          dockerfile: docker/db/DockerFile
-        restart: always
-        ports:
-            - 5432:5432
-        volumes:
-            - ./docker/postgres/:/docker-entrypoint-initdb.d/
+          - database
         networks:
             - symfony
     pgadmin:
@@ -48,7 +36,29 @@ services:
         ports:
           - "5050:80"
         networks:
-            - symfony
+          - symfony
+  ###> doctrine/doctrine-bundle ###
+    database:
+      build:
+          context: .
+          dockerfile: docker/db/DockerFile
+      restart: always
+      ports:
+        - 5432:5432
+      healthcheck:
+        test: ["CMD", "pg_isready"]
+        timeout: 5s
+        retries: 5
+        start_period: 60s
+      volumes:
+        - ./docker/postgres/:/docker-entrypoint-initdb.d/
+      networks:
+        - symfony
+  ###< doctrine/doctrine-bundle ###
 
 networks:
     symfony:
+volumes:
+###> doctrine/doctrine-bundle ###
+  database_data:
+###< doctrine/doctrine-bundle ###
