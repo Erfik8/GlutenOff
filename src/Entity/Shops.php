@@ -2,50 +2,67 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ShopsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ShopsRepository::class)]
-#[ORM\Table(name: '"Shops"', schema: 'public')]
+#[ORM\Table(name: 'Shops', schema: 'public')]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class Shops
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'shops')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(['read', 'write'])]
     private ?Adresses $id_adress = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['read', 'write'])]
     private ?string $google_share_link = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['read', 'write'])]
     private ?string $photo_link = null;
 
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?bool $gluten_free = null;
 
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?bool $vegan = null;
 
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?bool $vegetarian = null;
 
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?bool $lactose_free = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $google_embede_link = null;
+    #[Groups(['read', 'write'])]
+    private ?string $google_embeded_link = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['read', 'write'])]
     private ?string $logo_link = null;
 
     /**

@@ -2,31 +2,42 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\AdressesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AdressesRepository::class)]
-#[ORM\Table(name: '"Adresses"', schema: 'public')]
+#[ORM\Table(name: 'Adresses', schema: 'public')]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class Adresses
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $street = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $postal_code = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $accomodation = null;
 
     #[ORM\Column(type: Types::BIGINT)]
+    #[Groups(['read', 'write'])]
     private ?string $id_city = null;
 
     /**

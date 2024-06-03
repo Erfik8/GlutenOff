@@ -1,0 +1,31 @@
+body header.mobile {
+    width: 100%;
+    min-height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    position: sticky;
+    top: 0px;
+    background-color: var(--main-background);
+    z-index: 1;
+}
+
+body header.mobile img {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+body header.mobile img.hamburger{
+    height: 50px;
+    width: 50px;
+    margin-left: 30px;
+}
+
+body header.mobile img.logo{
+    height: 80px;
+    height: 80px;
+    margin-right: 30px;
+}

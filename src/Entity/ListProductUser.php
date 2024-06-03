@@ -2,30 +2,41 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ListProductUserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ListProductUserRepository::class)]
-#[ORM\Table(name: '"List_products_user"', schema: 'public')]
+#[ORM\Table(name: 'List_product_user', schema: 'public')]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class ListProductUser
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?int $id = null;
 
     /**
      * @var Collection<int, Products>
      */
     #[ORM\ManyToMany(targetEntity: Products::class, inversedBy: 'listProductUsers')]
+    #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private Collection $id_product;
 
     /**
      * @var Collection<int, Users>
      */
     #[ORM\ManyToMany(targetEntity: Users::class, inversedBy: 'listProductUsers')]
+    #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private Collection $id_user;
 
     public function __construct()

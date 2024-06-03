@@ -37,6 +37,20 @@ services:
           - "5050:80"
         networks:
           - symfony
+    
+    ui:
+      build:
+        context: ./ui
+      restart: unless-stopped
+      volumes:
+        - ./ui:/app
+        - /app/node_modules
+      ports:
+        - 3000:3000
+      command: ["npm", "start"]
+      environment:
+       WATCHPACK_POLLING: "true"
+  
   ###> doctrine/doctrine-bundle ###
     database:
       build:
@@ -61,4 +75,5 @@ networks:
 volumes:
 ###> doctrine/doctrine-bundle ###
   database_data:
+  nodemodules: {}
 ###< doctrine/doctrine-bundle ###

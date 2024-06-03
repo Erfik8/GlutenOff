@@ -2,46 +2,63 @@
 
 namespace App\Entity;
 
+
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\UsersRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
-#[ORM\Table(name: '"Users"', schema: 'public')]
-class Users
+#[ORM\Table(name: 'Users', schema: 'public')]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
+class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $email = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $password = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups(['read', 'write'])]
     private ?string $surname = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false, name: 'id_user_type')]
+    #[Groups(['read', 'write'])]
     private ?UserType $id_user_type = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Groups(['read', 'write'])]
     private ?string $logo_link = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Groups(['read', 'write'])]
     private ?\DateTimeInterface $premium_ending_date = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false, name: 'id_city')]
+    #[Groups(['read', 'write'])]
     private ?City $id_city = null;
 
     /**
@@ -215,5 +232,22 @@ class Users
         }
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        $roles[] = 'IS_AUTHENTICATED_FULLY';
+
+        return array_unique($roles);
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Implement the eraseCredentials method here
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
     }
 }

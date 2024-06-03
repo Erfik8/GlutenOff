@@ -1,0 +1,106 @@
+section.profile_basic_view
+{
+    background-color: rgba(148, 148, 148, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 0px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    overflow: hidden;
+    transition: cubic-bezier(0.77, 0, 0.175, 1);
+    transition-duration: 0.4s;
+    position: relative;
+} 
+section.profile_basic_view::-webkit-scrollbar
+{
+    display: none;
+}
+div.profile_view_box
+{
+    background-color: white;
+    overflow: scroll;
+    padding: 10px 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-width: 100%;
+    min-height: 100vh;
+}
+div.profile_view_box::-webkit-scrollbar
+{
+    display: none;
+}
+div.profile_view_box img
+{
+    width: 100px;
+    height: 0px;
+    border-radius: 100%;
+}
+div.profile_view_box h1
+{
+    color: black;
+}
+div.profile_view_box div#levelBar
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0px 30px;
+    text-wrap: nowrap;
+    box-sizing: border-box;
+}
+div.profile_view_box div#levelBar span 
+{
+    position: relative;
+    z-index: 1;
+    padding: 0px 4px;
+}
+
+div.profile_view_box div#levelBar div.outer_level_bar
+{
+    width: 100%;
+    margin: 0px 10px;
+    border-radius: 100px;
+    background-color: green;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+}
+div.profile_view_box div#levelBar div.inner_level_bar
+{
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    margin-right: auto;
+    border-radius: 100px;
+    margin-left: 0px;
+    background-color: var(--text-dark-color);
+    overflow: hidden;
+}
+button.settings
+{
+    font-size: 20px;
+    padding: 4px;
+    background-color: greenyellow;
+    border: solid 2px green;
+    color: green;    
+}
+button.logout
+{
+    font-size: 20px;
+    padding: 4px;
+    background-color: gray;
+    border: solid 2px #404040;
+    color: #404040;
+}
+
+
+
+

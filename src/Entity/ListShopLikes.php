@@ -2,33 +2,45 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ListShopLikesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ListShopLikesRepository::class)]
-#[ORM\Table(name: '"List_shop_likes"', schema: 'public')]
+#[ORM\Table(name: 'List_shop_likes', schema: 'public')]
+#[ApiResource(
+    normalizationContext: ['groups' => ['read']],
+    denormalizationContext: ['groups' => ['write']],
+)]
 class ListShopLikes
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private ?bool $userlike = null;
 
     /**
      * @var Collection<int, Shops>
      */
     #[ORM\ManyToMany(targetEntity: Shops::class, inversedBy: 'listShopLikes')]
+    #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private Collection $id_shop;
 
     /**
      * @var Collection<int, Users>
      */
     #[ORM\ManyToMany(targetEntity: Users::class, inversedBy: 'listShopLikes')]
+    #[ORM\Column]
+    #[Groups(['read', 'write'])]
     private Collection $id_user;
 
     public function __construct()
